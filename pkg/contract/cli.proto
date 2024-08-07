@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package puppeteer;
+
+option go_package = "pkg/contract";
+
+service MasterService {
+    rpc List(ListRequest) returns (ListResponse) {}
+    rpc Run(RunCommandRequest) returns (RunCommandResponse) {}
+    rpc Copy(CopyRequest) returns (CopyResponse) {}
+  }
+  
+  message ListRequest {}
+
+  message ListResponse {
+    repeated string puppets = 1;
+  }
+
+  message RunCommandRequest {
+    string puppetName = 1;
+    string command = 2;
+  }
+
+  message RunCommandResponse {
+    string result = 1;
+  }
+
+  message CopyRequest {
+    string puppetName = 1;
+    string fileName = 2;
+    string contents = 3;
+  }
+
+  message CopyResponse {}
+  
+
+  
+  
